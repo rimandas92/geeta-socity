@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Intro || User Documents</title>
+    <!-- Bootstrap -->
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+        rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+
+<body>
+
+    <div class="main_wrapper">
+        <div class="header inner_header">
+            <div class="container">
+                <div class="header_inner">
+                    <div class="logo">
+                        <a href="#"><img src="../../images/logo.png" alt="" /></a>
+                    </div>
+                    <div class="navigation_section">
+                        <div class="main_nav">
+                            <nav class="navbar navbar-default">
+
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/user/dashboard">Home</a></li>
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/howitsworks">How it works</a></li>
+                                        <li><a href="#">Contact us</a></li>
+
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+
+                            </nav>
+                        </div>
+
+                        <div class="account_dropdown">
+                            <div class="dropdown">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="proimg"><img src="../../images/driver.png" alt="" /></span> Welcome,
+                                    <span id="username"></span>
+                                    <span class="caret2"><img src="../../images/dropwdown.png" alt="" /></span>
+                                </button>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="/user/dashboard">Dashboard</a></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#" class="document-dropdown">Documents</a>
+                                        <ul class="dropdown-menu ">
+                                            <li class="pointer" ><a tabindex="-1" onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/driving`">Driver's License</a></li>
+                                            <li class="pointer"><a onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/social`">Social Security Number</a></li>
+                                            <li class="pointer"><a onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/gunpermit`" >Gun Permit</a></li>
+
+                                            <li class="pointer"><a href="#">Make &amp; Model</a></li>
+                                            <li class="pointer"><a onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/licence-number`">License Plate Number</a></li>
+                                            <li class="pointer"><a onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/registration`">Registration</a></li>
+                                            <li><a onclick="window.location.href=`/user/${JSON.parse(localStorage.getItem('user'))._id}/insurance`">Insurance</a></li>
+                                            <li class="pointer"><a onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/inspection`">Proof of Inspection</a></li>
+                                        </ul>
+
+                                    </li>
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a onclick="userLogout();" href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--
+               <div class="nav_login_section">
+                   <a href="#" class="login">Login</a>
+                   <a href="#" class="signup">Sign up</a>
+             
+               </div>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit_account">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="edit_account_form">
+                            <h2>Gun Permit license</h2>
+
+                            <div class="upload_document">
+                                <button><img src="../../images/upload-btn.png" alt="" /> Upload document</button>
+                                <input id="drivingDocument" type="file" >
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="driver_license_text">
+                                        <h4>Make sure the Gun Permit license</h4>
+                                        <ul>
+                                            <li>Is current (not expired)</li>
+                                            <li>Is not blurry</li>
+                                            <li>Includes all four corners in the photo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <% if(document.length ===0 || !document){ %>
+                                    <div class="col-md-5">
+                                        <div class="download_document">
+                                            <div class="download_document_img">
+                                                <img src="../../../images/no-img.png" alt="" />
+                                            </div>
+                                            <button><img src="../../../images/download-btn.png" alt="" /> Download
+                                                document</button>
+                                        </div>
+                                    </div>
+                                    <% }else{ %>
+                                       
+                                        <div class="col-md-5">
+                                            <div class="download_document">
+                                                <div class="download_document_img">
+                                                     <%- document.icon%> 
+                                                </div>
+                                                <button  onclick="window.open('<%= document.location%>')"><img src="../../../images/download-btn.png" alt="" /> Download
+                                                    document</button>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                            </div>
+                            <div id="loader" class="loader loader-default "></div>
+
+                            <div class="submit_btn">
+                                <button onclick="gunPermitUploadToServer();">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer_inner">
+                <div class="footer_nav">
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms & Conditions</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+
+                    </ul>
+                </div>
+                <div class="copy_right">
+                    @ Copyright Intro 2020 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"
+    integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ=="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css" integrity="sha512-HrLBWHEIRcc9ZemiLhR34DVdkr81NVqhOtT1fIZGdcY5UmC5JzJAEwuj9B/fcNA6huJ3NQ8KV67CmdM/3H2H3g==" crossorigin="anonymous" />
+    <!---------------------------Custom Jque"y-------------------------------------->
+    <script src="../../js/constant.js"></script>
+    <script src="../../js/user.js"></script>
+    <!---------------------------Custom Jque"y-------------------------------------->
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/checkUserToken.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/getlocation.js"></script>
+    <script src="../../js/fileUpload.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const user = JSON.parse(localStorage.getItem('user'))
+            document.getElementById('username').innerHTML = user.firstName;
+        });
+
+    </script>
+</body>
+
+</html>

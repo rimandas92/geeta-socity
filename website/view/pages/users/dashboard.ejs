@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Intro || User Dashboard</title>
+    <!-- Bootstrap -->
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+        rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="main_wrapper">
+        <div class="header inner_header">
+            <div class="container">
+                <div class="header_inner">
+                    <div class="logo">
+                        <a href="#"><img src="../images/logo.png" alt="" /></a>
+                    </div>
+                    <div class="navigation_section">
+                        <div class="main_nav">
+                            <nav class="navbar navbar-default">
+
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="#">Home</a></li>
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/howitsworks">How it works</a></li>
+                                        <li><a href="#">Contact us</a></li>
+
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+
+                            </nav>
+                        </div>
+
+                        <div class="account_dropdown">
+                            <div class="dropdown">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <span class="proimg"><img src="../images/driver.png" alt="" /></span> Welcome,
+                                    <span id="username"></span>
+                                    <span class="caret2"><img src="../images/dropwdown.png" alt="" /></span>
+                                </button>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="#">Dashboard</a></li>
+
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#" class="document-dropdown">Documents</a>
+                                        <ul class="dropdown-menu ">
+                                            <li class="pointer"><a tabindex="-1"
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/driving`">Driver's
+                                                    License</a></li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/social`">Social
+                                                    Security Number</a></li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/gunpermit`">Gun
+                                                    Permit</a></li>
+
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/make-model`">Make
+                                                    &amp; Model</a></li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/licence-number`">License
+                                                    Plate Number</a></li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/registration`">Registration</a>
+                                            </li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/insurance`">Insurance</a>
+                                            </li>
+                                            <li class="pointer"><a
+                                                    onclick="window.location.href=`${JSON.parse(localStorage.getItem('user'))._id}/inspection`">Proof
+                                                    of Inspection</a></li>
+                                        </ul>
+
+                                    </li>
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a onclick="userLogout();" href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--
+               <div class="nav_login_section">
+                   <a href="#" class="login">Login</a>
+                   <a href="#" class="signup">Sign up</a>
+             
+               </div>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard_page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <h2>Dashboard</h2>
+                        <div class="dashboard_search">
+                            <div class="dashboard_search_inner">
+                                <input type="text" class="search_bar">
+                                <button class="search_btn">Search</button>
+                            </div>
+                        </div>
+                        <div class="dashboard_table">
+                            <table>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reason</th>
+                                    <th>Vehicle Details</th>
+                                    <th>Location</th>
+                                    <th>Action</th>
+                                </tr>
+                                <% for (var i=0; i < pullOver.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <%= utils.dateFormate(pullOver[i].createdAt) %>
+                                        </td>
+                                        <td> <%= pullOver[i].reason %></td>
+                                        <td> <%= pullOver[i].userId.carDetails.modelId.name + pullOver[i].userId.carDetails.makeId.name %></td>
+                                        <td>149, Ring Road</td>
+                                        <td><a href="#" data-toggle="modal" data-target="#myModal" class="view_map">View
+                                                Map</a></td>
+                                    </tr>
+                                    <% } %>
+                            </table>
+                        </div>
+                        <div class="main_pagination">
+                            <ul class="pagination">
+                                <li><a href="#"><img src="../images/pagi_arrow1.png" alt="" /></a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#"><img src="../images/pagi_arrow2.png" alt="" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer_inner">
+                <div class="footer_nav">
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms & Conditions</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+
+                    </ul>
+                </div>
+                <div class="copy_right">
+                    @ Copyright Intro 2020 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3721465.8528448674!2d87.85049849999999!3d24.372813999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1605507520262!5m2!1sen!2sin"
+                        width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                        aria-hidden="false" tabindex="0"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!---------------------------Custom Jque"y-------------------------------------->
+    <script src="../js/custom.js"></script>
+    <script src="../../js/constant.js"></script>
+    <script src="../js/checkUserToken.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/getlocation.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script>
+        $(document).ready(function () {
+            const user = JSON.parse(localStorage.getItem('user'))
+            document.getElementById('username').innerHTML = user.firstName;
+        });
+
+    </script>
+</body>
+
+</html>

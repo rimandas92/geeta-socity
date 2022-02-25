@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Signup || Intro</title>
+    <!-- Bootstrap -->
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+        rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <meta name="google-signin-client_id"
+        content="512075513588-e48usjfa042bb6lch158ipfvnbria5v7.apps.googleusercontent.com">
+    <link href="../css/responsive.css" rel="stylesheet">
+    <script type="text/javascript"
+        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+</head>
+
+<body>
+
+    <div class="main_wrapper">
+        <div class="header inner_header">
+            <div class="container">
+                <div class="header_inner">
+                    <div class="logo">
+                        <a href="/"><img src="images/logo.png" alt="" /></a>
+                    </div>
+                    <div class="navigation_section">
+                        <div class="main_nav">
+                            <nav class="navbar navbar-default">
+
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/howitsworks">How it works</a></li>
+                                        <li><a href="#">Contact us</a></li>
+
+                                    </ul>
+
+                                </div><!-- /.navbar-collapse -->
+
+                            </nav>
+                        </div>
+                        <div class="nav_login_section">
+                            <a href="/signin" class="login">Login</a>
+                            <a href="#" class="signup">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="signin_page">
+            <div class="container">
+                <h2>Register For A New Account</h2>
+                <div class="login_content">
+                    <div class="login_box">
+
+                        <div class="login_input_box">
+                            <input id="firstName" type="text" class="login_input_field" placeholder="First Name">
+                        </div>
+                        <div class="login_input_box">
+                            <input id="lastName" type="text" class="login_input_field" placeholder="Last Name">
+                        </div>
+                        <div class="login_input_box">
+                            <input id="email" type="text" class="login_input_field" placeholder="Email Address">
+                        </div>
+                        <div class="login_input_box">
+                            <input id="dateOfBirth" type="date" class="login_input_field dob"
+                                placeholder="Date of Birth">
+                        </div>
+                        <div class="login_input_box">
+                            <input id="password" type="password" class="login_input_field" placeholder="Password">
+                        </div>
+                        <div class="login_input_box">
+                            <input id="confirmPassword" type="password" class="login_input_field"
+                                placeholder="Confirm Password">
+                        </div>
+                        <div class="login_btn">
+                            <button onclick="signUp();" class="signin">Submit</button>
+
+                        </div>
+                    </div>
+                    <div class="login_with">
+                        <div class="login_with_inner">
+                            <h4>Or</h4>
+                            <p>use one of your social profiles</p>
+                            <div class="signup_with_btn">
+                                <button id="customBtn" data-onsuccess="onSignIn"><img src="images/Google.png"
+                                        alt="" /></button>
+                                <button data-border-radius="50" class="signin-button" id="appleid-signin"
+                                    data-type="sign in"><img src="images/Apple.png" alt="" /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loader" class="loader loader-default "></div>
+
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer_inner">
+                <div class="footer_nav">
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms & Conditions</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+
+                    </ul>
+                </div>
+                <div class="copy_right">
+                    @ Copyright Intro 2020 All Rights Reserved
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"
+        integrity="sha512-uE2UhqPZkcKyOjeXjPCmYsW9Sudy5Vbv0XwAVnKBamQeasAVAmH6HR9j5Qpy6Itk1cxk+ypFRPeAZwNnEwNuzQ=="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css"
+        integrity="sha512-HrLBWHEIRcc9ZemiLhR34DVdkr81NVqhOtT1fIZGdcY5UmC5JzJAEwuj9B/fcNA6huJ3NQ8KV67CmdM/3H2H3g=="
+        crossorigin="anonymous" />
+    <!---------------------------Custom Jque"y-------------------------------------->
+    <script src="../js/custom.js"></script>
+    <script src="../../js/constant.js"></script>
+    <script src="../js/user.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        var googleUser = {};
+        var startApp = function () {
+            gapi.load('auth2', function () {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '1024328773666-h95465v4qf44hh98q1sgvctuf5tv4i73.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+
+        function attachSignin(element) {
+
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function (googleUser) {
+                    // var profile = googleUser.getBasicProfile();
+                    // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                    // console.log('Full Name: ' + profile.getName());
+                    // console.log('Given Name: ' + profile.getGivenName());
+                    // console.log('Family Name: ' + profile.getFamilyName());
+                    // console.log("Image URL: " + profile.getImageUrl());
+                    // console.log("Email: " + profile.getEmail());
+
+                    // The ID token you need to pass to your backend:
+                    var id_token = googleUser.getAuthResponse().id_token;
+                    console.log("ID Token: " + id_token);
+                    googleSignUp(id_token)
+                }, function (error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script>
+    <script>startApp();</script>
+    <script type="text/javascript">
+        AppleID.auth.init({
+            clientId: 'com.intro.signin',
+            redirectURI: 'https://nodeserver.mydevfactory.com:8081/auth/social/apple/signup',
+            scope:'email',
+            usePopup: false //or false defaults to false
+        }).then(res=>{
+            console.log(res)
+        });
+    </script>
+</body>
+
+</html>

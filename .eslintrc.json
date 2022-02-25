@@ -1,0 +1,26 @@
+{
+    "env":{
+        "browser": true,        
+        "commonjs": true,
+        "es6": true
+    },
+
+
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    }, 
+    "plugins": [
+        "security",
+        "promise"
+    ],
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"]
+    }
+}
